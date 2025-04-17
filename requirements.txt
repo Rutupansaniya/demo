@@ -2,3 +2,4 @@ Flask
 flask-cors
 twilio
 gunicorn
+python-dotenv
