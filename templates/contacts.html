@@ -1,1 +1,24 @@
 <!-- Emergency Contacts management -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emergency Contacts</title>
+</head>
+<body>
+    <h2>Emergency Contacts</h2>
+    <form method="POST" action="/contacts">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <button type="submit">Add Contact</button>
+    </form>
+
+    <ul>
+        {% for contact in contacts %}
+            <li>{{ contact.name }} - {{ contact.phone }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/home">Back to Home</a>
+</body>
+</html>
+
