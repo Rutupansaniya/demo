@@ -1,15 +1,19 @@
-<!-- Home page with Emergency Contacts and Live Location buttons -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h2>Welcome to Woman Safety App</h2>
-    <p><a href="/contacts">Manage Emergency Contacts</a></p>
-    <p><a href="/location">Live Location Tracking</a></p>
-    <form action="/send-sos" method="POST">
+    <form action="/contacts" method="get">
+        <button type="submit">📇 Emergency Contacts</button>
+    </form>
+    <form action="/location" method="get">
+        <button type="submit">📍 Live Location Tracking</button>
+    </form>
+    <form action="/send-sos" method="post">
         <button type="submit">🚨 Send SOS</button>
     </form>
     <br>
