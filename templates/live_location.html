@@ -1,1 +1,40 @@
 <!-- Leaflet map tracking with SOS -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Location</title>
+    <script>
+        function sendLocation(position) {
+            fetch('/location', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                })
+            }).then(response => response.json())
+              .then(data => {
+                  document.getElementById("map-link").innerHTML =
+                      `<a href="https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}" target="_blank">View My Live Location</a>`;
+              });
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(sendLocation);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        window.onload = getLocation;
+    </script>
+</head>
+<body>
+    <h2>Live Location Tracker</h2>
+    <p id="map-link">Fetching location...</p>
+    <a href="/home">Back to Home</a>
+</body>
+</html>
